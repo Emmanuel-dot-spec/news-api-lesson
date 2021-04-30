@@ -1,9 +1,7 @@
 <template>
-  <div class="home">
+  <div class="health">
     <div class="info-table">
-      <div v-if="getLoading">Loading...</div>
       <k-similar
-        v-else
         v-for="(topStories, index) in getAllNews"
         :key="index"
         :anecdote="topStories"
@@ -18,7 +16,7 @@ import { mapActions, mapGetters } from "vuex";
 import KSimilar from "@/components/Similar.vue";
 
 export default {
-  name: "Home",
+  name: "Health",
   components: {
     KSimilar,
   },
@@ -30,7 +28,7 @@ export default {
     this.fetchAllNews({ category });
   },
   computed: {
-    ...mapGetters(["getAllNews", "getLoading"]),
+    ...mapGetters(["getAllNews"]),
   },
   methods: {
     ...mapActions(["fetchAllNews"]),
